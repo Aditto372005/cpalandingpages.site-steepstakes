@@ -10,10 +10,13 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      window.onload = () => {
+      function sendHeight() {
   const height = document.body.scrollHeight;
-  window.parent.postMessage(height, '*'); // or restrict origin instead of '*'
-};
+  window.parent.postMessage({ type: 'setHeight', height }, '*');
+}
+window.onload = sendHeight;
+window.onresize = sendHeight;
+
     </script>
   </body>
 </html>
