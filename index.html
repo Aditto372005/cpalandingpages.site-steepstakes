@@ -12,10 +12,11 @@
     <script>
       function sendHeight() {
   const height = document.body.scrollHeight;
-  window.parent.postMessage({ type: 'setHeight', height }, '*');
+  window.parent.postMessage({ type: 'setHeight', height }, '*'); // restrict '*' to your domain for security
 }
-window.onload = sendHeight;
-window.onresize = sendHeight;
+
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
 
     </script>
   </body>
